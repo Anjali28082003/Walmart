@@ -6,6 +6,7 @@ const challengeSchema = new mongoose.Schema({
     categoriesPurchased: { type: Number, default: 0 },
     productsReviewed: { type: Number, default: 0 },
     sharedOnSocial: { type: Boolean, default: false },
+    quizPlayed: { type: Boolean, default: false }, // ✅ Added this line
   },
   pointsEarned: { type: Number, default: 0 },
   lastSpinDate: { type: Date, default: null },

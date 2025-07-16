@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const questions = [
   {
@@ -29,16 +30,37 @@ const MiniQuiz = () => {
     setQuestion(randomQuestion);
   }, []);
 
-  const handleAnswer = (option) => {
-    setSelectedOption(option);
-    setIsAnswered(true);
+  const handleAnswer = async (option) => {
+  setSelectedOption(option);
+  setIsAnswered(true);
 
-    if (option === question.answer) {
-      setFeedback("✅ Correct! +20 points");
+  const token = localStorage.getItem("token");
+
+  try {
+    const res = await axios.post(
+      "http://localhost:5000/api/challenges/quiz-points",
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    if (res.data.message.includes("already")) {
+      setFeedback("⚠️ You've already played today’s quiz.");
     } else {
-      setFeedback(`❌ Oops! Correct answer: ${question.answer}`);
+      setFeedback("✅ Correct! +20 points");
     }
-  };
+  } catch (error) {
+    console.error("Error adding quiz points:", error);
+    setFeedback("❌ Something went wrong while submitting quiz.");
+  }
+
+  if (option !== question.answer) {
+    setFeedback(`❌ Oops! Correct answer: ${question.answer}`);
+  }
+};
 
   if (!question) return null;
 
