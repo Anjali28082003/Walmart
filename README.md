@@ -91,8 +91,8 @@ Admin dashboard for inventory control
 ---
 
 - # Contributors 
-[**Arti Kumari**](https://github.com/Anjali28082003)
-[**Komal Kumari**](https://github.com/Anjali28082003)
+[**Arti Kumari**](https://github.com/arti0601)
+[**Komal Kumari**](https://github.com/komal-nitp)
 [**Anjali Rani**](https://github.com/Anjali28082003)
-[**Sakshi Priya**](https://github.com/Anjali28082003)
+[**Sakshi Priya**](https://github.com/sakshipriya10)
 
